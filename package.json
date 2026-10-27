@@ -1,0 +1,19 @@
+{
+  "name": "fleetflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "FleetFlow - delivery planning and logistics management (YottaFlex AI challenge)",
+  "scripts": {
+    "install:all": "npm install && npm install --prefix client && npm install --prefix server",
+    "dev": "concurrently -n server,client -c blue,green \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
+    "build": "npm run build --prefix client && npm run build --prefix server",
+    "generate": "npm run generate --prefix server",
+    "repro": "npm run repro --prefix server",
+    "test": "npm test --prefix server",
+    "typecheck": "npm run typecheck --prefix server && npm run build --prefix client",
+    "db:load": "npm run db:load --prefix server"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,1268 @@
+{
+  "variant": "baseline",
+  "seed": 20261022,
+  "record_counts": {
+    "customer_site": 500,
+    "vehicle": 100,
+    "driver": 100,
+    "customer_order": 2000,
+    "vehicle_capacity": 110,
+    "vehicle_site_restriction": 1020,
+    "shift": 2364,
+    "travel_time_matrix": 12150,
+    "route": 418,
+    "delivery": 2000,
+    "time_window": 2000,
+    "route_stop": 1980,
+    "delivery_outcome": 1980,
+    "state_event": 17164
+  },
+  "summary": {
+    "errors": 0,
+    "warnings": 121,
+    "checks_passed": 35,
+    "checks_failed": 0,
+    "checks_warn": 2,
+    "checks_total": 37
+  },
+  "checks": [
+    {
+      "code": "PK_DUPLICATE",
+      "severity": "ERROR",
+      "description": "Primary keys are unique in every table",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ID_FORMAT_INVALID",
+      "severity": "ERROR",
+      "description": "IDs follow the required zero-padded formats",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "FK_MISSING",
+      "severity": "ERROR",
+      "description": "Every foreign key points to an existing parent row (all joins valid)",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ENUM_INVALID",
+      "severity": "ERROR",
+      "description": "Status/type fields only use allowed values",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "DATE_ORDER_INVALID",
+      "severity": "ERROR",
+      "description": "Dates and times are in a valid order (start before end)",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARITH_ORDER_TOTAL",
+      "severity": "ERROR",
+      "description": "Order totals = items x unit values",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARITH_DELIVERY_ORDER",
+      "severity": "ERROR",
+      "description": "Delivery weight/volume/site/date match the order",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARITH_SERVICE_MINUTES",
+      "severity": "ERROR",
+      "description": "Service minutes follow the documented formula",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARITH_SHIFT_MINUTES",
+      "severity": "ERROR",
+      "description": "Shift minutes = end - start",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARITH_OUTCOME",
+      "severity": "ERROR",
+      "description": "Outcome delay/on-time values match arrival and window",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ROUTE_TOTAL_MISMATCH",
+      "severity": "ERROR",
+      "description": "Route stop count/weight/volume equal the sum of its stops",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "STOP_TIME_ARITH_MISMATCH",
+      "severity": "ERROR",
+      "description": "Stop arrival = previous departure + travel; departure = start + service",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "LIFECYCLE_INVALID_TRANSITION",
+      "severity": "ERROR",
+      "description": "Every state change is an allowed transition",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "LIFECYCLE_FINAL_STATE_MISMATCH",
+      "severity": "ERROR",
+      "description": "Last event state equals the entity's current status",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "EVENT_ORDER_INVALID",
+      "severity": "ERROR",
+      "description": "Events are append-only, numbered 1..n and not going back in time",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ROUTE_CAPACITY_EXCEEDED",
+      "severity": "ERROR",
+      "description": "Route weight, volume and stop count fit the vehicle capacity",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "VEHICLE_NOT_AVAILABLE",
+      "severity": "ERROR",
+      "description": "Vehicle is active and has a capacity row on the route date",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "VEHICLE_RESTRICTION_VIOLATED",
+      "severity": "ERROR",
+      "description": "Vehicle is not restricted from any stop's site",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "LICENSE_MISMATCH",
+      "severity": "ERROR",
+      "description": "Driver licence allows the vehicle",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "SHIFT_EXCEEDED",
+      "severity": "ERROR",
+      "description": "Route fits inside the driver's shift (including return to depot)",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "SHIFT_DRIVER_MISMATCH",
+      "severity": "ERROR",
+      "description": "Route shift belongs to the route driver and date",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "TIME_WINDOW_VIOLATED",
+      "severity": "ERROR",
+      "description": "Service starts inside the delivery time window",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "ARRIVAL_BEFORE_PREV_DEPARTURE",
+      "severity": "ERROR",
+      "description": "A stop never arrives before the previous stop departs",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "STOP_DUPLICATE_DELIVERY",
+      "severity": "ERROR",
+      "description": "A delivery appears at most once in a route",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "STOP_MISSING",
+      "severity": "ERROR",
+      "description": "Every delivery assigned to a route has a stop in that route",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "STOP_SEQUENCE_GAP",
+      "severity": "ERROR",
+      "description": "Stop sequence numbers are exactly 1..n",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "STOP_ROUTE_MISMATCH",
+      "severity": "ERROR",
+      "description": "A stop's delivery is assigned to the stop's route",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "VEHICLE_DOUBLE_BOOKED",
+      "severity": "ERROR",
+      "description": "A vehicle has at most one route per day",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "DRIVER_DOUBLE_BOOKED",
+      "severity": "ERROR",
+      "description": "A driver has at most one route per day",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "DELIVERY_COVERAGE_MISSING",
+      "severity": "ERROR",
+      "description": "Every delivery is assigned to a route OR explicitly unserved with a reason",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "REASON_CODE_INVALID",
+      "severity": "ERROR",
+      "description": "Unserved/failure reason codes are in the allowed list",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "FAILED_WITHOUT_REASON",
+      "severity": "ERROR",
+      "description": "Failed outcomes have a reason; delivered outcomes have none",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "OUTCOME_MISSING",
+      "severity": "ERROR",
+      "description": "Delivered/failed deliveries have an outcome row",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "OUTCOME_ORPHAN",
+      "severity": "ERROR",
+      "description": "Outcomes match their delivery and stop (none for unserved deliveries)",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "COORD_OUT_OF_REGION",
+      "severity": "ERROR",
+      "description": "Customer site coordinates are inside the defined region",
+      "violations": 0,
+      "status": "PASS"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "description": "Delivery was explicitly left unserved (reason code given)",
+      "violations": 20,
+      "status": "WARN"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "description": "Simulated route returned to depot after the shift end",
+      "violations": 101,
+      "status": "WARN"
+    }
+  ],
+  "ground_truth_evaluation": {
+    "injected_anomalies": 0,
+    "detected": 0,
+    "missed": [],
+    "unexplained_error_findings": 0,
+    "expected_decisions_total": 20,
+    "expected_decisions_matched": 20,
+    "expected_decision_failures": []
+  },
+  "findings": [
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000001",
+      "route_id": "RTE-2026-000001",
+      "message": "simulated return at 853, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000013",
+      "route_id": "RTE-2026-000013",
+      "message": "simulated return at 1044, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000023",
+      "route_id": "RTE-2026-000023",
+      "message": "simulated return at 844, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000024",
+      "route_id": "RTE-2026-000024",
+      "message": "simulated return at 854, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000028",
+      "route_id": "RTE-2026-000028",
+      "message": "simulated return at 1026, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000035",
+      "route_id": "RTE-2026-000035",
+      "message": "simulated return at 1073, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000037",
+      "route_id": "RTE-2026-000037",
+      "message": "simulated return at 1037, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000043",
+      "route_id": "RTE-2026-000043",
+      "message": "simulated return at 1023, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000046",
+      "route_id": "RTE-2026-000046",
+      "message": "simulated return at 1037, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000051",
+      "route_id": "RTE-2026-000051",
+      "message": "simulated return at 880, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000052",
+      "route_id": "RTE-2026-000052",
+      "message": "simulated return at 1056, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000056",
+      "route_id": "RTE-2026-000056",
+      "message": "simulated return at 1041, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000059",
+      "route_id": "RTE-2026-000059",
+      "message": "simulated return at 880, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000061",
+      "route_id": "RTE-2026-000061",
+      "message": "simulated return at 887, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000065",
+      "route_id": "RTE-2026-000065",
+      "message": "simulated return at 847, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000067",
+      "route_id": "RTE-2026-000067",
+      "message": "simulated return at 849, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000069",
+      "route_id": "RTE-2026-000069",
+      "message": "simulated return at 1041, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000074",
+      "route_id": "RTE-2026-000074",
+      "message": "simulated return at 874, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000076",
+      "route_id": "RTE-2026-000076",
+      "message": "simulated return at 1074, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000078",
+      "route_id": "RTE-2026-000078",
+      "message": "simulated return at 842, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000088",
+      "route_id": "RTE-2026-000088",
+      "message": "simulated return at 851, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000098",
+      "route_id": "RTE-2026-000098",
+      "message": "simulated return at 854, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000106",
+      "route_id": "RTE-2026-000106",
+      "message": "simulated return at 858, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000113",
+      "route_id": "RTE-2026-000113",
+      "message": "simulated return at 867, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000115",
+      "route_id": "RTE-2026-000115",
+      "message": "simulated return at 1031, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000120",
+      "route_id": "RTE-2026-000120",
+      "message": "simulated return at 881, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000121",
+      "route_id": "RTE-2026-000121",
+      "message": "simulated return at 1049, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000129",
+      "route_id": "RTE-2026-000129",
+      "message": "simulated return at 1050, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000132",
+      "route_id": "RTE-2026-000132",
+      "message": "simulated return at 879, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000135",
+      "route_id": "RTE-2026-000135",
+      "message": "simulated return at 1023, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000137",
+      "route_id": "RTE-2026-000137",
+      "message": "simulated return at 846, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000139",
+      "route_id": "RTE-2026-000139",
+      "message": "simulated return at 846, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000140",
+      "route_id": "RTE-2026-000140",
+      "message": "simulated return at 1038, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000142",
+      "route_id": "RTE-2026-000142",
+      "message": "simulated return at 1031, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000143",
+      "route_id": "RTE-2026-000143",
+      "message": "simulated return at 842, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000150",
+      "route_id": "RTE-2026-000150",
+      "message": "simulated return at 853, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000158",
+      "route_id": "RTE-2026-000158",
+      "message": "simulated return at 886, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000167",
+      "route_id": "RTE-2026-000167",
+      "message": "simulated return at 1021, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000168",
+      "route_id": "RTE-2026-000168",
+      "message": "simulated return at 1039, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000172",
+      "route_id": "RTE-2026-000172",
+      "message": "simulated return at 864, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000173",
+      "route_id": "RTE-2026-000173",
+      "message": "simulated return at 1025, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000182",
+      "route_id": "RTE-2026-000182",
+      "message": "simulated return at 1032, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000185",
+      "route_id": "RTE-2026-000185",
+      "message": "simulated return at 847, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000194",
+      "route_id": "RTE-2026-000194",
+      "message": "simulated return at 858, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000196",
+      "route_id": "RTE-2026-000196",
+      "message": "simulated return at 1059, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000201",
+      "route_id": "RTE-2026-000201",
+      "message": "simulated return at 860, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000203",
+      "route_id": "RTE-2026-000203",
+      "message": "simulated return at 1026, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000204",
+      "route_id": "RTE-2026-000204",
+      "message": "simulated return at 881, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000207",
+      "route_id": "RTE-2026-000207",
+      "message": "simulated return at 857, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000210",
+      "route_id": "RTE-2026-000210",
+      "message": "simulated return at 1049, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000214",
+      "route_id": "RTE-2026-000214",
+      "message": "simulated return at 852, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000216",
+      "route_id": "RTE-2026-000216",
+      "message": "simulated return at 855, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000222",
+      "route_id": "RTE-2026-000222",
+      "message": "simulated return at 1047, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000223",
+      "route_id": "RTE-2026-000223",
+      "message": "simulated return at 844, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000225",
+      "route_id": "RTE-2026-000225",
+      "message": "simulated return at 1030, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000243",
+      "route_id": "RTE-2026-000243",
+      "message": "simulated return at 872, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000246",
+      "route_id": "RTE-2026-000246",
+      "message": "simulated return at 857, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000247",
+      "route_id": "RTE-2026-000247",
+      "message": "simulated return at 842, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000255",
+      "route_id": "RTE-2026-000255",
+      "message": "simulated return at 859, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000258",
+      "route_id": "RTE-2026-000258",
+      "message": "simulated return at 1021, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000266",
+      "route_id": "RTE-2026-000266",
+      "message": "simulated return at 872, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000267",
+      "route_id": "RTE-2026-000267",
+      "message": "simulated return at 880, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000274",
+      "route_id": "RTE-2026-000274",
+      "message": "simulated return at 1026, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000280",
+      "route_id": "RTE-2026-000280",
+      "message": "simulated return at 842, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000288",
+      "route_id": "RTE-2026-000288",
+      "message": "simulated return at 1054, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000299",
+      "route_id": "RTE-2026-000299",
+      "message": "simulated return at 874, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000301",
+      "route_id": "RTE-2026-000301",
+      "message": "simulated return at 859, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000303",
+      "route_id": "RTE-2026-000303",
+      "message": "simulated return at 1035, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000310",
+      "route_id": "RTE-2026-000310",
+      "message": "simulated return at 865, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000316",
+      "route_id": "RTE-2026-000316",
+      "message": "simulated return at 1034, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000317",
+      "route_id": "RTE-2026-000317",
+      "message": "simulated return at 1051, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000320",
+      "route_id": "RTE-2026-000320",
+      "message": "simulated return at 873, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000321",
+      "route_id": "RTE-2026-000321",
+      "message": "simulated return at 1052, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000326",
+      "route_id": "RTE-2026-000326",
+      "message": "simulated return at 841, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000329",
+      "route_id": "RTE-2026-000329",
+      "message": "simulated return at 1045, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000330",
+      "route_id": "RTE-2026-000330",
+      "message": "simulated return at 1035, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000332",
+      "route_id": "RTE-2026-000332",
+      "message": "simulated return at 1036, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000334",
+      "route_id": "RTE-2026-000334",
+      "message": "simulated return at 841, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000336",
+      "route_id": "RTE-2026-000336",
+      "message": "simulated return at 844, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000338",
+      "route_id": "RTE-2026-000338",
+      "message": "simulated return at 1026, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000339",
+      "route_id": "RTE-2026-000339",
+      "message": "simulated return at 862, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000341",
+      "route_id": "RTE-2026-000341",
+      "message": "simulated return at 1023, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000342",
+      "route_id": "RTE-2026-000342",
+      "message": "simulated return at 1038, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000347",
+      "route_id": "RTE-2026-000347",
+      "message": "simulated return at 841, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000349",
+      "route_id": "RTE-2026-000349",
+      "message": "simulated return at 849, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000354",
+      "route_id": "RTE-2026-000354",
+      "message": "simulated return at 1053, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000360",
+      "route_id": "RTE-2026-000360",
+      "message": "simulated return at 888, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000361",
+      "route_id": "RTE-2026-000361",
+      "message": "simulated return at 897, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000372",
+      "route_id": "RTE-2026-000372",
+      "message": "simulated return at 842, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000375",
+      "route_id": "RTE-2026-000375",
+      "message": "simulated return at 864, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000376",
+      "route_id": "RTE-2026-000376",
+      "message": "simulated return at 1027, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000378",
+      "route_id": "RTE-2026-000378",
+      "message": "simulated return at 1033, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000386",
+      "route_id": "RTE-2026-000386",
+      "message": "simulated return at 848, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000387",
+      "route_id": "RTE-2026-000387",
+      "message": "simulated return at 1037, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000391",
+      "route_id": "RTE-2026-000391",
+      "message": "simulated return at 871, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000392",
+      "route_id": "RTE-2026-000392",
+      "message": "simulated return at 876, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000397",
+      "route_id": "RTE-2026-000397",
+      "message": "simulated return at 865, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000400",
+      "route_id": "RTE-2026-000400",
+      "message": "simulated return at 1027, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000411",
+      "route_id": "RTE-2026-000411",
+      "message": "simulated return at 847, shift ends 840"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000414",
+      "route_id": "RTE-2026-000414",
+      "message": "simulated return at 1023, shift ends 1020"
+    },
+    {
+      "code": "ACTUAL_SHIFT_OVERRUN",
+      "severity": "WARNING",
+      "entity_type": "route",
+      "entity_id": "RTE-2026-000417",
+      "route_id": "RTE-2026-000417",
+      "message": "simulated return at 1025, shift ends 1020"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000109",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000152",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000327",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000473",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000700",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000714",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-000772",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001019",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001299",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001333",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001394",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001409",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001633",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001648",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001672",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001678",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001761",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001765",
+      "route_id": null,
+      "message": "unserved: EXCEEDS_MAX_VEHICLE_CAPACITY"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001795",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    },
+    {
+      "code": "UNSERVED_DELIVERY",
+      "severity": "WARNING",
+      "entity_type": "delivery",
+      "entity_id": "DEL-2026-001878",
+      "route_id": null,
+      "message": "unserved: NO_FEASIBLE_TIME_WINDOW"
+    }
+  ]
+}
